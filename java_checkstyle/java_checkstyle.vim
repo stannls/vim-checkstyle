@@ -90,19 +90,26 @@ function! s:RunCheckstyle()
 
     let cmd_output = system(checkstyle_cmd)
 
+    " Remove first and last line because they contain log messages
+    let errors = split(cmd_output, "\n")
+    let errors = errors[1:(len(errors)-2)]
+    let cmd_output = join(errors, "\n")
+
     " Redirect the output to a temp file
     let tmpfile = tempname()
     execute "redir! > " . tmpfile
     silent echon cmd_output
     redir END
 
+
     " store the existing errorformat so that it can be restored later
     let old_errorformat = &errorformat
 
-    set errorformat=%f:%l:\ %m,%f:%l:%v:\ %m,%-G%.%#
+    "set errorformat to format for checkstyle
+    set errorformat=[WARN]\ %f:%l:%c:\ %m
 
     " Read the error file
-    execute "silent! cfile " . tmpfile
+    execute "silent cfile " . tmpfile
 
     " restore the previously existing error format
     let &errorformat = old_errorformat
