@@ -1,8 +1,8 @@
 " File: java_checkstyle.vim
 " Author: Xandy Johnson
-" Update: Minto Tsai
-" Version: 0.4
-" Last Modified: July 11, 2003
+" Update: Yannis Storrer
+" Version: 0.5
+" Last Modified: December 20, 2023
 "
 " Credits
 " -------
