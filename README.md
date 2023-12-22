@@ -11,14 +11,12 @@ Dependencies
 ------------
 The plugin depends on Java <http://java.sun.com/> and Checkstyle
 <http://checkstyle.sourceforge.net/>.  It was written using Checkstyle
-version 3.1.
+version 10.4.
 
 Installation
 ------------
-The java_checkstyle.vim script should be copied to the right directory.
-On UNIX, this is ~/.vim/ftplugin; see ':help ftplugins' and ':help
-add-global-plugin' for more information.  You will likely need to specify
-the location of the checkstyle-all jar file and your desired Checkstyle
+Either manually place the java_checkstyle.vim script in your autoload directory or install the plugin with your plugin manager of choice. You will likely need to specify
+the location of the checkstyle jar file and your desired Checkstyle
 configuration file, which can be done either by editing the script itself
 or by adding the settings to your vimrc file (see the section in the
 script called "Configuration").  If you have not already done so, you will
@@ -26,6 +24,16 @@ also need to turn on filetype plugin usage in Vim using the following
 command (you will probably want to put this in your vimrc file):
 
     :filetype plugin on
+
+Configuration
+-------------
+The Checkstyle_Classpath variable is used to specify the location of the checkstyle jar. Example configuration:
+
+`:let Checkstyle_Classpath = 'C:\checkstyle-3.1\checkstyle-all-3.1.jar'`
+
+The Checkstyle_XML variable is used to specify the checkstyle condiguration file from which checkstyle will read its configuration. Example configuration:
+
+`:let Checkstyle_XML = '/opt/checkstyle/docs/sun_checks.xml'`
 
 Usage
 -----
