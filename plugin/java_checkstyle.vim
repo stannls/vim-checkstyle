@@ -114,14 +114,6 @@ function! s:RunCheckstyle()
     " restore the previously existing error format
     let &errorformat = old_errorformat
 
-    " Show the first error message error if there is one (making sure not to
-    " cause a Vim error if there are no Checkstyle errors).
-    let v:errmsg = ""
-    silent! verbose cc
-    if v:errmsg == ""
-	cc
-    endif
-
     call delete(tmpfile)
 endfunction
 
